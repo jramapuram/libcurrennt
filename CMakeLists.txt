@@ -2,11 +2,10 @@ PROJECT(currennt)
 CMAKE_MINIMUM_REQUIRED (VERSION 2.8)
 
 # OSX Does not need these [Verified on 10.10]
-IF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++")
-ELSEIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++")
-ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+# Linux doesn't either [Verified on Ubuntu 14.04]
+IF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libstdc++")
+ENDIF(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 
 FIND_PACKAGE (CUDA)
 FIND_PACKAGE (Boost 1.55.0 REQUIRED COMPONENTS program_options system filesystem random thread  REQUIRED)
